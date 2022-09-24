@@ -1,0 +1,76 @@
+.Navbar {
+    width: 100%;
+    background-color: transparent;
+    padding: 1em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: absolute;
+    margin-top: inherit;
+}
+
+a {
+    color: white;
+}
+
+.NavbarButton {
+    display: none;
+    cursor: pointer;
+}
+
+.NavbarSvg {
+    width: 2em;
+    height: 2em;
+    fill: coral;
+}
+
+.NavbarUl {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.NabvarLi {
+    margin: 0 .5em;
+}
+
+@media screen and (max-width:480px){
+
+    .NavbarButton {
+        display: flex;
+    }
+
+    .NabvarNav {
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        height: 0vh;
+        opacity: 0;
+        overflow: hidden;
+        transition: all .5s ease;
+    }
+
+    .NabvarNav.isActive {
+        height:50vh;
+        opacity: 1;
+    }
+
+    .NabvarNav.isDisable {
+        display: none;
+    }
+    
+    .NavbarUl {
+        flex-direction: column;
+    }
+
+    .NabvarLi {
+        margin: .5em 0;
+    }
+
+}
+

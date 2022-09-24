@@ -1,13 +1,15 @@
 import React from "react";
 import './App.css';
-import { Menu } from "./components/Menu"
+import { Home } from "./components/Home";
+import { Navbar } from "./components/Navbar";
 import { Form } from "./components/Form"
 
 function App() {
   return (
     <React.Fragment>
-      <Menu />
-      <Form />
+      <Navbar />
+      {/* <Form /> */}
+      <Home />
     </React.Fragment>
   );
 }
