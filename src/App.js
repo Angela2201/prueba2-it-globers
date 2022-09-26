@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import './App.css';
-import { Menu } from "./components/Menu"
-import { Form } from "./components/Form"
+import { Home } from "./components/Home";
 
 function App() {
+
   return (
     <React.Fragment>
-      <Menu />
-      <Form />
+      <Home />
     </React.Fragment>
   );
 }

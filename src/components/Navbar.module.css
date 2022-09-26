@@ -1,0 +1,89 @@
+.Navbar {
+    width: 100%;
+    height: 10vh;
+    background-color: transparent;
+    padding: 1em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    position: relative;
+    z-index: 1;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.NavbarButton {
+    display: none;
+    cursor: pointer;
+}
+
+.NavbarSvg {
+    width: 2em;
+    height: 2em;
+    fill: coral;
+}
+
+.NabvarNav {
+    display: flex;
+    flex-direction: row;
+}
+
+.NavbarUl {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+}
+
+.NabvarLi {
+    margin: 0 .5em;
+}
+
+@media screen and (max-width:480px){
+
+    .NavbarButton {
+        display: flex;
+    }
+
+    .NabvarNav {
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        height: 0vh;
+        opacity: 0;
+        overflow: hidden;
+        transition: all .5s ease;
+        z-index: 1;
+        position: relative;
+    }
+
+    .NabvarNav.isActive {
+        height:50vh;
+        opacity: 1;
+        background-color:rgba(80, 73, 214, 0.9) !important;
+        border-radius: 20px;
+    }
+
+    .NabvarNav.isDisable {
+        display: none;
+    }
+    
+    .NavbarUl {
+        flex-direction: column;
+    }
+
+    .NabvarLi {
+        margin: .5em 0;
+    }
+
+}
+
