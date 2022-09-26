@@ -1,123 +1,64 @@
 import React from "react";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 import styles from './Form.module.css';
 
-function Form({ dataAirline }) {
+function Form({ dataAirline, setDataAirline }) {
 
-    const [name,setName] = useState("");
-    const [email,setEmail] = useState("");
-    const [cellPhone,setCellPhone] = useState("");
-    const [age,setAge] = useState("");
+    const { register, formState: { errors }, handleSubmit, reset } = useForm()
+    const onSubmit = data => {
+        console.log(data)
+        reset()
+        showAlert()
+        setDataAirline("")
+    };
 
-    const [inputs, setInputs] = useState ({
-        nombre: '',
-        correo: '',
-        celular: '',
-        edad: ''
-    })
-
-    const handleInputChange = (e) => {
-        setInputs({
-            ...inputs,
-            [e.target.name] : e.target.value
+    const showAlert = () => {
+        Swal.fire({
+            title: 'Exito',
+            text: 'Tu información fue enviada con éxito, estaremos en contacto contigo',
+            icon: 'success',
+            timer:'5000'
         })
     }
 
-    const saveData = (e) => {
-        e.preventDefault();
-        console.log(inputs.nombre)
-    }
-
-
     console.log(dataAirline)
 
-    return (
-      <>
+    return(
+        <>
         <div className={styles.Text}>
           Hola, bienvenido, sabemos que quieres viajar en un {dataAirline}, por favor diligencia el siguiente
           formulario:
         </div>
-        <form className={styles.Form} onSubmit={saveData}>
-            <label htmlFor="nombre">Nombre Completo</label>
-            <input
-                type="text"
-                id="name"
-                name="nombre"
-                /* value={name} */
-                /* onChange={(e) => setName(e.target.value)} */
-                autoComplete="off"
-                onChange={handleInputChange}
+        <form id="form" onSubmit={handleSubmit(onSubmit)} className={styles.Form}>
+            <input 
+                {...register("name", { required: true, maxLength: 20 })} 
+                aria-invalid={errors.name ? "true" : "false"} placeholder="Nombre Completo" autoComplete="off"
             />
-            <label htmlFor="correo">Correo</label>
-            <input
-                type="email"
-                id="email"
-                name="correo"
-                value={email}
-                /* onChange={(e) => setEmail(e.target.value)} */
-                autoComplete="off"
-                onChange={handleInputChange}
+            {errors.name?.type === 'required' && <p role="alert">El nombre es requerido</p>}
+
+            <input 
+                {...register("mail", { required: "El correo es requerido" })} 
+                aria-invalid={errors.mail ? "true" : "false"} placeholder="Correo" autoComplete="off"
             />
-            <label htmlFor="celular">Celular</label>
-            <input
-                type="number"
-                id="number"
-                name="celular"
-                value={cellPhone}
-                /* onChange={(e) => setCellPhone(e.target.value)} */
-                autoComplete="off"
-                onChange={handleInputChange}
+            {errors.mail?.type === 'required' && <p role="alert">{errors.mail?.message}</p>}
+
+            <input 
+                {...register("cellphone", { required: true, valueAsNumber: true, maxLength: 10 })}
+                aria-invalid={errors.cellphone ? "true" : "false"} placeholder="Celular" autoComplete="off"
             />
-            <label htmlFor="edad">Edad</label>
-            <input
-                type="number"
-                id="age"
-                name="edad"
-                value={age}
-                /* onChange={(e) => setAge(e.target.value)} */
-                autoComplete="off"
-                onChange={handleInputChange}
+            {errors.cellphone?.type === 'required' && <p role="alert">El celular es requerido</p>}
+
+            <input 
+                {...register("age", { required: true, valueAsNumber: true, min: 18, max: 100 })} 
+                aria-invalid={errors.age ? "true" : "false"} placeholder="Edad" autoComplete="off"
             />
-            <button type="submit" value="Enviar">
-                Enviar
-            </button>
+            {errors.age?.type === 'required' && <p role="alert">La edad es requerida</p>}
+
+            <input type="submit" value="Enviar"/>
         </form>
         </>
-    );
+    )
 }
 
 export { Form };
-
-    /* const callbackFunction = (e) => {
-        e.preventDefault();
-        const myFormData = new FormData(e.target);
-        const formDataObj = {};
-        myFormData.forEach((value, key) => (formDataObj[key] = value));
-        console.log(myFormData);
-    } */
-
-    /* const onChangeName = (e) => {
-        this.setInputs({ name: e.target.value })
-    }
-
-    const onChangeEmail = (e) => {
-        this.setInputs({ email: e.target.value })
-    }
-
-    const onChangeCellPhone = (e) => {
-        this.setInputs({ cellPhone: e.target.value })
-    }
-
-    const onChangeAge = (e) => {
-        this.setInputs({ age: e.target.value })
-    }
-
-    const saveData = (e) => {
-        e.preventDefault();
-        this.setInputs({
-            name: '',
-            email: '',
-            cellPhone: '',
-            age: ''
-        })
-    } */

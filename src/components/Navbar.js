@@ -31,6 +31,7 @@ function Navbar({ setDataAirline }) {
         setDataAirline(aerolinea);
         console.log(aerolinea);
         console.log("Esta funcionando");
+        toggleMenu();
     }
 
     return (

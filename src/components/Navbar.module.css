@@ -1,14 +1,15 @@
 .Navbar {
     width: 100%;
-    background-color: red;
+    height: 10vh;
+    background-color: transparent;
     padding: 1em;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
     color: black;
-    position: absolute;
-    z-index: -1;
+    position: relative;
+    z-index: 1;
 }
 
 a {
@@ -61,11 +62,15 @@ a {
         opacity: 0;
         overflow: hidden;
         transition: all .5s ease;
+        z-index: 1;
+        position: relative;
     }
 
     .NabvarNav.isActive {
         height:50vh;
         opacity: 1;
+        background-color:rgba(80, 73, 214, 0.9) !important;
+        border-radius: 20px;
     }
 
     .NabvarNav.isDisable {
