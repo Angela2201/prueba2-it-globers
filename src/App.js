@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import './App.css';
 import { Home } from "./components/Home";
-import { Navbar } from "./components/Navbar";
-import { Form } from "./components/Form"
 
 function App() {
+
+  /* const [dataAirline, setDataAirline] = useState("");
+  console.log("soy data desde app", dataAirline)  */
+
   return (
     <React.Fragment>
-      <Navbar />
-      {/* <Form /> */}
-      <Home />
+      
+      <Home /* setDataAirline = {setDataAirline} */ />
+
     </React.Fragment>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import styles from './Navbar.module.css';
 
-function Navbar() {
+function Navbar({ setDataAirline }) {
 
     const [ menu , setMenu ] = useState(false)
 
@@ -26,6 +26,13 @@ function Navbar() {
 
     const airlines = useDatos()
 
+    const clickButton = (item) => {
+        const aerolinea = (item.name)
+        setDataAirline(aerolinea);
+        console.log(aerolinea);
+        console.log("Esta funcionando");
+    }
+
     return (
         <header className={styles.Navbar}>
             <h1 className={styles.NavbarH1}>
@@ -39,11 +46,11 @@ function Navbar() {
                 </svg>
             </button>
             <nav className={`${styles.NabvarNav} ${menu ? styles.isActive : styles.isDisable}`}>
-                {airlines.map(item => (
-                    <ul className={styles.NavbarUl} key={item.id}>
-                        <li className={styles.NabvarLi}><a href="#" className={styles.NavbarA}>{item.name}</a></li>
-                    </ul>
+                <ul className={styles.NavbarUl} >
+                {airlines.map((item, index) => (                    
+                    <li key={index} className={styles.NabvarLi}><a onClick={() => clickButton(item)} href="#" className={styles.NavbarA}>{item.name}</a></li>
                 ))}
+                </ul>
             </nav>
         </header>
     )

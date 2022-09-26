@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import { Form2 } from "./Form2";
 import styles from './Home.module.css';
+import { Navbar } from "./Navbar";
 
 function Home() {
 
+    const [dataAirline, setDataAirline] = useState("");
+    console.log("soy data desde app", dataAirline)
+
     return (
-        <div>
-            <img src="https://i.imgur.com/PivJ2TM.jpg" alt="airplane" />
+        <div className={styles.container}>
+            <Navbar setDataAirline = {setDataAirline} />
+            <Form2 setDataAirline = {setDataAirline} />
         </div>
     )
 }

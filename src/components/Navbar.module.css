@@ -1,18 +1,19 @@
 .Navbar {
     width: 100%;
-    background-color: transparent;
+    background-color: red;
     padding: 1em;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: black;
     position: absolute;
-    margin-top: inherit;
+    z-index: -1;
 }
 
 a {
-    color: white;
+    color: black;
+    text-decoration: none;
 }
 
 .NavbarButton {
@@ -26,11 +27,18 @@ a {
     fill: coral;
 }
 
+.NabvarNav {
+    display: flex;
+    flex-direction: row;
+}
+
 .NavbarUl {
     display: flex;
     flex-flow: row wrap;
+    flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+    list-style: none;
 }
 
 .NabvarLi {
