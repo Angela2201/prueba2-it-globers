@@ -30,28 +30,28 @@ function Form({ dataAirline, setDataAirline }) {
           formulario:
         </div>
         <form id="form" onSubmit={handleSubmit(onSubmit)} className={styles.Form}>
-            <input 
+            <input type="string"
                 {...register("name", { required: true, maxLength: 20 })} 
                 aria-invalid={errors.name ? "true" : "false"} placeholder="Nombre Completo" autoComplete="off"
             />
             {errors.name?.type === 'required' && <p role="alert">❌ El nombre es requerido</p>}
             {errors.name?.type === 'maxLength' && <p role="alert">❌ El campo del nombre debe tener menos de 20 caracteres</p>}
 
-            <input 
+            <input type="string"
                 {...register("mail", { required: true, pattern: /\S+@\S+\.\S+/ })}
                 aria-invalid={errors.mail ? "true" : "false"} placeholder="Correo" autoComplete="off"
             />
             {errors.mail?.type === 'required' && <p role="alert">❌ El correo es requerido</p>}
             {errors.mail?.type === 'pattern' && <p role="alert">❌ El formato del correo es incorrecto</p>}
 
-            <input 
+            <input type="string"
                 {...register("cellphone", { required: true, minLength: 10 })}
                 aria-invalid={errors.cellphone ? "true" : "false"} placeholder="Celular" autoComplete="off"
             />
             {errors.cellphone?.type === 'required' && <p role="alert">❌ El celular es requerido</p>}
             {errors.cellphone?.type === 'minLength' && <p role="alert">❌ El campo del celular debe tener 10 digitos</p>}
 
-            <input 
+            <input type="number"
                 {...register("age", { required: true, valueAsNumber: true, min: 18, max: 100 })} 
                 aria-invalid={errors.age ? "true" : "false"} placeholder="Edad" autoComplete="off"
             />
