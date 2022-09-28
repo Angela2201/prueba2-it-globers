@@ -29,8 +29,6 @@ function Navbar({ setDataAirline }) {
     const clickButton = (item) => {
         const aerolinea = (item.name)
         setDataAirline(aerolinea);
-        console.log(aerolinea);
-        console.log("Esta funcionando");
         toggleMenu();
     }
 

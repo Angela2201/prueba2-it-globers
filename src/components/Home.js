@@ -6,7 +6,6 @@ import { Navbar } from "./Navbar";
 function Home() {
 
     const [dataAirline, setDataAirline] = useState("");
-    console.log("soy data desde app", dataAirline)
 
     return (
         <div className={styles.container}>
